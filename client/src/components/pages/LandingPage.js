@@ -12,7 +12,7 @@ export default function LandingPage() {
             <p className="main-para text-center">Foods You Choose - COSC-431</p>
             <div className="buttons text-center box-center">
 
-            <Link to="/LoginPage">
+            <Link to="/login">
                 <button className="primary-button" id="reg_btn"><span>Log In</span></button>
             </Link>
 
