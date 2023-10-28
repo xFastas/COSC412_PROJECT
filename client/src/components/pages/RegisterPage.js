@@ -15,10 +15,6 @@ export default function SignUpPage() {
                     <input type="text" name="first_name" required />
                 </p>
                 <p>
-                    <label>Email address</label><br/>
-                    <input type="email" name="email" required />
-                </p>
-                <p>
                     <label>Password</label><br/>
                     <input type="password" name="password" requiredc />
                 </p>

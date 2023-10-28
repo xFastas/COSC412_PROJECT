@@ -19,8 +19,6 @@ export default function LoginPage() {
                     </p>
                     <p className=''>
                         <button id="sub_btn" type="submit">Login</button>
-                        <Link to="/forget-password"><label className="right-label position-absolute top-50 start-50 translate-middle">Forget password?</label></Link>
-                        
                     </p>
                 </form>
                 <footer>
