@@ -15,7 +15,7 @@ app.get("/getGPT", (req, res) => {
 
 
     // Execute the Java file with parameters
-    const javaProcess = exec(`java -cp . YourJavaFile ${ingredients}`, (error, stdout, stderr) => {
+    const javaProcess = exec(`java -cp . OpenAPI.java ${ingredients}`, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error executing Java file: ${error.message}`);
             res.status(500).send('Internal Server Error');
