@@ -61,6 +61,42 @@ app.get("/getGPT", (req, res) => {
     
 });
 
+app.get("/getSavedRecipe", (req, res) => {
+    const username = req.query.username;
+
+    console.log(username);
+
+    pool.query('SELECT * FROM savedrecipes WHERE username = ?', [username], (error, results, fields) => {
+        if (error) {
+          console.error('Error executing query:', error);
+          res.status(500).send('Internal Server Error');
+          return;
+        }
+    
+    if (results.length == 0) { //No Saved Recipe Found For User
+        res.json("Invalid");
+    }
+
+    else{
+        recipeName = results[0].recipeName;
+        console.log(recipeName);
+        pool.query('SELECT * FROM recipe WHERE recipeName = ?', [recipeName], (error, results, fields) => {
+            if (error) {
+              console.error('Error executing query:', error);
+              res.status(500).send('Internal Server Error');
+              return;
+            }
+        
+
+        res.json(results);
+        
+        });
+    }
+
+    });
+
+});
+
 app.get("/saveRecipe", (req, res) => {
     const recipeName = req.query.recipeName;
     const ingredients = req.query.ingredients;

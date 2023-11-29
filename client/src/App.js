@@ -6,6 +6,7 @@ import RegisterPage from './components/pages/RegisterPage'
 import ForgetPasswordPage from './components/pages/ForgetPasswordPage'
 import HomePage from './components/pages/HomePage'
 import ResultsPage from './components/pages/ResultsPage'
+import SavedRecipePage from './components/pages/SavedRecipePage'
 import './App.css'
 
 
@@ -20,6 +21,7 @@ export default function App() {
                     <Route path="/register" element={ <RegisterPage/> } />  
                     <Route path="/home" element={ <HomePage/> } />
                     <Route exact path="/result" element={ <ResultsPage/> } />
+                    <Route exact path="/saved" element={ <SavedRecipePage/> } />
                     <Route exact path="/" element={ <LandingPage/> } />
                 </Routes>
             </div>

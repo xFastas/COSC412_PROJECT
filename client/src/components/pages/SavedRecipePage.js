@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 import '../../App.css';
 import { useLocation } from 'react-router-dom';
 
-export default function ResultsPage() {
+export default function SavedRecipePage() {
     const location = useLocation();
     const data = location.state?.data || [];
-    const recipeName = data["name"];
-    const ingredients = data["ingredients"];
-    const steps = data["steps"];
-    const username = data["username"];
+    const recipeName = "AAA";
+    const ingredients = ['AAA', 'BBB', 'CCC'];
+    const steps = ['AAA', 'AAA', 'AAA'];
+    const username = "AAA";
 
-    console.log(data);
+    console.log(steps);
 
-    const handleSaveRecipe = async (e) => {
+    const handleDeleteRecipe = async (e) => {
         e.preventDefault();
-        console.log('Save button clicked');
+        console.log('Delete button clicked');
 
         const params = new URLSearchParams();
         params.append('recipeName', recipeName);
@@ -23,7 +23,7 @@ export default function ResultsPage() {
         params.append('steps', steps);
         params.append('username', username);
 
-        const response = await fetch(`http://localhost:3001/saveRecipe?${params.toString()}`);
+        const response = await fetch(`http://localhost:3001/deleteRecipe?${params.toString()}`);
             if (!response.ok) {
                 throw new Error('Network" response was not ok');
             }
@@ -32,11 +32,11 @@ export default function ResultsPage() {
         console.log(data);
 
         if (data == "Invalid"){
-            alert("Recipe Already Saved");
+            alert("Error Deleting Recipe");
         }
 
         else{
-            alert("Recipe Saved");
+            alert("Recipe Deleted");
         }
     }
 
@@ -64,7 +64,7 @@ export default function ResultsPage() {
 
             <form action="/home">
                 <p>
-                    <button id="sub_btn" type="submit" onClick={handleSaveRecipe}>Save</button>
+                    <button id="sub_btn" type="submit" onClick={handleDeleteRecipe}>Delete</button>
                 </p>
             </form>
 

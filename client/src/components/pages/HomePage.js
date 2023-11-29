@@ -115,6 +115,28 @@ export default function HomePage() {
         }
     };
 
+    const handleSavedRecipeClick = async (e) => {
+        e.preventDefault();
+        
+        const params = new URLSearchParams();
+        params.append('username', username);
+
+        const response = await fetch(`http://localhost:3001/getSavedRecipe?${params.toString()}`);
+            if (!response.ok) {
+                alert("Error connecting to database");
+            }
+          
+        const data = await response.json();
+        if (data == "Invalid"){
+            alert("You do not have a saved recipe");
+        }
+        else{
+            history('/saved', { state: { data } });  
+        }
+            
+        
+    };
+
     const handleSearchClick = async (e) => {
         try {
             e.preventDefault();
@@ -162,6 +184,11 @@ export default function HomePage() {
     return (
         <div className="text-center">
             <h1 className="main-title home-page-title">Search Recipes</h1>
+
+            <button className="saved-recipe-button" onClick={handleSavedRecipeClick}>
+            Saved Recipe
+            </button>
+
             <form action="/home" className="ingredient-form">
                 <div className="ingredient-column">
                     <p>
