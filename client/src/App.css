@@ -150,3 +150,14 @@ form span {
    height: 400px;
    width: 400px;
 }
+
+.ingredient-form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.ingredient-column {
+  display: flex;
+  flex-direction: column;
+}

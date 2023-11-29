@@ -9,6 +9,34 @@ export default function ResultsPage() {
     const recipeName = data["name"];
     const ingredients = data["ingredients"];
     const steps = data["steps"];
+    const username = data["username"];
+
+    const handleSaveRecipe = async (e) => {
+        e.preventDefault();
+        console.log('Save button clicked');
+
+        const params = new URLSearchParams();
+        params.append('recipeName', recipeName);
+        params.append('ingredients', ingredients);
+        params.append('steps', steps);
+        params.append('username', username);
+
+        const response = await fetch(`http://localhost:3001/saveRecipe?${params.toString()}`);
+            if (!response.ok) {
+                throw new Error('Network" response was not ok');
+            }
+
+        const data = await response.json();
+        console.log(data);
+
+        if (data == "Invalid"){
+            alert("Recipe Already Saved");
+        }
+
+        else{
+            alert("Recipe Saved");
+        }
+    }
 
     return (
         <div className="text-center">
@@ -34,7 +62,7 @@ export default function ResultsPage() {
 
             <form action="/home">
                 <p>
-                    <button id="sub_btn" type="submit">Save</button>
+                    <button id="sub_btn" type="submit" onClick={handleSaveRecipe}>Save</button>
                 </p>
             </form>
 
