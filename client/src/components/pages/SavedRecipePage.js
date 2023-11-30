@@ -6,12 +6,16 @@ import { useLocation } from 'react-router-dom';
 export default function SavedRecipePage() {
     const location = useLocation();
     const data = location.state?.data || [];
-    const recipeName = "AAA";
-    const ingredients = ['AAA', 'BBB', 'CCC'];
-    const steps = ['AAA', 'AAA', 'AAA'];
+
+    const newData = data[0];
+
+    const recipeName = newData.recipeName;
+    const ingredients = newData.ingredients.split(",");
+    const steps = newData.instructions.split(",");
+
+
     const username = "AAA";
 
-    console.log(steps);
 
     const handleDeleteRecipe = async (e) => {
         e.preventDefault();

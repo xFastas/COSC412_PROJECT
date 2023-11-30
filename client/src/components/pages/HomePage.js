@@ -127,6 +127,7 @@ export default function HomePage() {
             }
           
         const data = await response.json();
+        console.log("Saved Response Data: "+data);
         if (data == "Invalid"){
             alert("You do not have a saved recipe");
         }

@@ -87,7 +87,7 @@ app.get("/getSavedRecipe", (req, res) => {
               return;
             }
         
-
+        console.log("Returning Results From Server: "+JSON.stringify(results));
         res.json(results);
         
         });
