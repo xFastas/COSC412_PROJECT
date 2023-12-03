@@ -27,7 +27,7 @@ public class OpenAPI {
 
             String requestData = "{" +
                     "\"model\": \"gpt-3.5-turbo\"," +
-                    "\"messages\": [{\"role\": \"assistant\", \"content\": \"give me a recipe that uses"+args[0]+", use json format to describe the name, ingredients, and steps.\"}]," +
+                    "\"messages\": [{\"role\": \"assistant\", \"content\": \"give me a recipe that uses"+args[0]+", use json format to describe the name, ingredients, and steps. Only give me the json data. No text.\"}]," +
                     "\"temperature\": 0.2" +
                     "}";
 

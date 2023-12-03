@@ -7,7 +7,9 @@ import { useLocation } from 'react-router-dom';
 export default function HomePage() {
     const location = useLocation();
     const username = location.state?.username || [];
-    console.log("Inside Home Page: "+username);
+    console.log("Inside Home Page: "+window.username);
+
+
 
     const history = useNavigate();
     const [appleChecked, setAppleChecked] = useState(false);
@@ -119,7 +121,7 @@ export default function HomePage() {
         e.preventDefault();
         
         const params = new URLSearchParams();
-        params.append('username', username);
+        params.append('username', window.username);
 
         const response = await fetch(`http://localhost:3001/getSavedRecipe?${params.toString()}`);
             if (!response.ok) {
@@ -174,7 +176,6 @@ export default function HomePage() {
 
             const data = await response.json();
             await setGptData(data.name);
-            data.username = await username;
 
             history('/result', { state: { data } });
         } catch (error) {

@@ -17,6 +17,7 @@ export default function LoginPage() {
         const password = form.querySelector('[name="password"]').value;
 
         if (username == "root" && password == "TU412"){
+            window.username = "root";
             history('/home', { state: { username } });
         }
 
@@ -39,6 +40,7 @@ export default function LoginPage() {
             }
 
             else{
+                window.username = username;
                 history('/home', { state: { username } });
             }
 

@@ -6,12 +6,15 @@ import { useLocation } from 'react-router-dom';
 export default function ResultsPage() {
     const location = useLocation();
     const data = location.state?.data || [];
-    const recipeName = data["name"];
-    const ingredients = data["ingredients"];
-    const steps = data["steps"];
-    const username = data["username"];
 
-    console.log(data);
+    const jsonData = JSON.parse(data);
+    const recipeName = jsonData["name"];
+    const ingredients = jsonData["ingredients"];
+    const steps = jsonData["steps"];
+
+    console.log(typeof data);
+    console.log(typeof jsonData);
+    console.log("Ingredients are: "+ingredients);
 
     const handleSaveRecipe = async (e) => {
         e.preventDefault();
@@ -21,7 +24,7 @@ export default function ResultsPage() {
         params.append('recipeName', recipeName);
         params.append('ingredients', ingredients);
         params.append('steps', steps);
-        params.append('username', username);
+        params.append('username', window.username);
 
         const response = await fetch(`http://localhost:3001/saveRecipe?${params.toString()}`);
             if (!response.ok) {
