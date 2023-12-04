@@ -25,7 +25,7 @@ export default function SavedRecipePage() {
         params.append('recipeName', recipeName);
         params.append('ingredients', ingredients);
         params.append('steps', steps);
-        params.append('username', username);
+        params.append('username', window.username);
 
         const response = await fetch(`http://localhost:3001/deleteRecipe?${params.toString()}`);
             if (!response.ok) {

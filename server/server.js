@@ -55,6 +55,20 @@ app.get("/getGPT", (req, res) => {
     
 });
 
+app.get("/deleteRecipe", (req, res) => {
+    const username = req.query.username;
+
+    pool.query('DELETE FROM savedrecipes WHERE username = ?', [username], (error, results, fields) => {
+        if (error) {
+          console.error('Error executing query:', error);
+          res.status(500).send('Internal Server Error');
+          return;
+        }
+    
+    res.json("Deleted");
+    });
+});
+
 app.get("/getSavedRecipe", (req, res) => {
     const username = req.query.username;
 
