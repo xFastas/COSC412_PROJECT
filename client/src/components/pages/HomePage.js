@@ -145,6 +145,9 @@ export default function HomePage() {
             e.preventDefault();
             console.log('Search button clicked');
             const selectedIngredients = [];
+            if(window.username == 'root'){
+                selectedIngredients.push('root');
+            }
             if (appleChecked) selectedIngredients.push('apple');
             if (onionsChecked) selectedIngredients.push('onions');
             if (potatoesChecked) selectedIngredients.push('potatoes');

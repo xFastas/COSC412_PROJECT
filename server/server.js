@@ -23,12 +23,16 @@ app.get("/getGPT", (req, res) => {
     // Access the 'keyword' parameter from the query string
     const ingredients = req.query.keyword || [];
 
+    if (ingredients.substr(0,4) === 'root'){
+        console.log("We got in here");
+        const responseData = '{ "name": "Caramelized Onion Pasta", "ingredients": [ "2 large onions, thinly sliced", "2 tablespoons olive oil", "1 teaspoon sugar", "1/2 teaspoon salt", "1/4 teaspoon black pepper", "8 ounces pasta", "1/4 cup grated Parmesan cheese", "Fresh parsley, for garnish" ], "steps": [ "Heat olive oil in a large skillet over medium heat.", "Add the sliced onions and cook, stirring occasionally, until caramelized and golden brown, about 20-25 minutes.", "Sprinkle sugar, salt, and black pepper over the onions and continue cooking for another 5 minutes.", "Meanwhile, cook the pasta according to package instructions until al dente. Drain and set aside.", "Add the cooked pasta to the skillet with the caramelized onions and toss to combine.", "Sprinkle grated Parmesan cheese over the pasta and onions and toss again until well coated.", "Serve the caramelized onion pasta hot, garnished with fresh parsley." ] }'
+        res.json(responseData);
+    }
 
-    //const responseData = { "name": "Caramelized Onion Pasta", "ingredients": [ "2 large onions, thinly sliced", "2 tablespoons olive oil", "1 teaspoon sugar", "1/2 teaspoon salt", "1/4 teaspoon black pepper", "8 ounces pasta", "1/4 cup grated Parmesan cheese", "Fresh parsley, for garnish" ], "steps": [ "Heat olive oil in a large skillet over medium heat.", "Add the sliced onions and cook, stirring occasionally, until caramelized and golden brown, about 20-25 minutes.", "Sprinkle sugar, salt, and black pepper over the onions and continue cooking for another 5 minutes.", "Meanwhile, cook the pasta according to package instructions until al dente. Drain and set aside.", "Add the cooked pasta to the skillet with the caramelized onions and toss to combine.", "Sprinkle grated Parmesan cheese over the pasta and onions and toss again until well coated.", "Serve the caramelized onion pasta hot, garnished with fresh parsley." ] }
-    //res.json(responseData);
-    
-    // Execute the Java file with parameters
-    const javaProcess = exec(`java -cp . OpenAPI.java ${ingredients}`, (error, stdout, stderr) => {
+    else{
+
+        // Execute the Java file with parameters
+        const javaProcess = exec(`java -cp . OpenAPI.java ${ingredients}`, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error executing Java file: ${error.message}`);
             res.status(500).send('Internal Server Error');
@@ -52,7 +56,8 @@ app.get("/getGPT", (req, res) => {
         });
     
     });
-    
+
+    }    
 });
 
 app.get("/deleteRecipe", (req, res) => {
