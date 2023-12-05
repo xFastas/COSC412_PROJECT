@@ -23,6 +23,8 @@ app.get("/getGPT", (req, res) => {
     // Access the 'keyword' parameter from the query string
     const ingredients = req.query.keyword || [];
 
+
+    // Root Account: For Debugging and Demo Purposes Only
     if (ingredients.substr(0,4) === 'root'){
         console.log("We got in here");
         const responseData = '{ "name": "Caramelized Onion Pasta", "ingredients": [ "2 large onions, thinly sliced", "2 tablespoons olive oil", "1 teaspoon sugar", "1/2 teaspoon salt", "1/4 teaspoon black pepper", "8 ounces pasta", "1/4 cup grated Parmesan cheese", "Fresh parsley, for garnish" ], "steps": [ "Heat olive oil in a large skillet over medium heat.", "Add the sliced onions and cook, stirring occasionally, until caramelized and golden brown, about 20-25 minutes.", "Sprinkle sugar, salt, and black pepper over the onions and continue cooking for another 5 minutes.", "Meanwhile, cook the pasta according to package instructions until al dente. Drain and set aside.", "Add the cooked pasta to the skillet with the caramelized onions and toss to combine.", "Sprinkle grated Parmesan cheese over the pasta and onions and toss again until well coated.", "Serve the caramelized onion pasta hot, garnished with fresh parsley." ] }'
@@ -41,7 +43,6 @@ app.get("/getGPT", (req, res) => {
 
         const jsonObject = JSON.parse(stdout);
         const generatedText = jsonObject.choices[0].message.content;
-        console.log(`Java process output: ${generatedText}`);
 
         // Set the 'Access-Control-Allow-Origin' header to allow requests from http://localhost:3000
         res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -167,8 +168,6 @@ app.get("/registerCredentials", (req, res) => {
           res.status(500).send('Internal Server Error');
           return;
         }
-
-    console.log(results);
     
     if (results.length == 0){
         pool.query('INSERT INTO credentials (username, password) VALUES (?, ?)', [username, password], (error, results, fields) => {
@@ -204,7 +203,6 @@ app.get("/getCredentials", (req, res) => {
       }
   
       // Log the results to the console
-      console.log('Credentials:', results);
 
       if (results.length == 0){
         // return invalid to client

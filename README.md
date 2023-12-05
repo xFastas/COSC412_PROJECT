@@ -55,3 +55,11 @@ This code also uses a ChatGPT API key. The API key will be provided with the res
  https://www.youtube.com/watch?v=EIYapGbNRwk
 
 Once you have an API key with funds, open OpenAPI.java and place your API key inside the apiKey Variable.
+
+
+**Local Account**
+If you have any issues logging in or generating recipes from ChatGPT, feel free to use this account
+Username: root
+Password: TU440
+
+This is a demo account that displays a static recipe, great for Debugging/Demonstrations.
