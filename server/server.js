@@ -1,4 +1,3 @@
-// Your Express server file (e.g., server.js)
 const express = require('express');
 const bodyParser = require('body-parser');
 const { exec } = require('child_process');
@@ -48,7 +47,6 @@ app.get("/getGPT", (req, res) => {
         res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
         
         // Respond with data based on the keyword
-
         res.json(generatedText);
 
         // Handle Java process exit
@@ -201,8 +199,6 @@ app.get("/getCredentials", (req, res) => {
         res.status(500).send('Internal Server Error');
         return;
       }
-  
-      // Log the results to the console
 
       if (results.length == 0){
         // return invalid to client

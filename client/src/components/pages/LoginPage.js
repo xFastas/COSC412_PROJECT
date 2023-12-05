@@ -33,7 +33,6 @@ export default function LoginPage() {
                 }
 
             const data = await response.json();
-            console.log(data);
 
             if (data == "Invalid"){
                 alert("Incorrect Username/Password");

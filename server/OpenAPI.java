@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 public class OpenAPI {
     public static void main(String[] args) {
         try {
-            String apiKey = ""; //Enter your own API Key
+            String apiKey = ""; //Enter your own API Keys
             String endpoint = "https://api.openai.com/v1/chat/completions";
 
             URL url = new URL(endpoint);
